@@ -6,7 +6,7 @@ import { Menu } from './components/Menu';
 import './styles/global.css';
 
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
-import { Post } from './components/Post';
+import { Post } from './components/Posts';
 import { Redirect } from './components/Redirect';
 import { NoteFound } from './components/NotFound';
 
@@ -17,7 +17,10 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/about' element={<About />} />
-        <Route path='/posts/:id' element={<Post />} />
+        {/* <Route path='/posts/:id' element={<Post />} /> */}
+        <Route path='/posts' element={<Post />}>
+          <Route path=':id' element={<div>Outlet</div>} />
+        </Route>
         <Route path='/posts' element={<Post />} />
         <Route path='/redirect' element={<Redirect />} />
         <Route path='*' element={<NoteFound />} />
